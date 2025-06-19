@@ -1,0 +1,33 @@
+services:
+  app.test:
+    container_name: bloom_scrap_app_container
+    depends_on:
+      - ollama
+    restart: no
+    build: .
+    image: bloom_scrap_app_image
+    ports:
+      - "8889:8889"
+    volumes:
+      - ".:/app"
+    env_file:
+      - .env
+    networks:
+      - bloom_test_network
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    restart: no
+    ports:
+      - 11434:11434
+    volumes:
+      - ./ollama_data:/root/.ollama
+    env_file:
+      - .env
+    networks:
+      - bloom_test_network
+
+networks:
+  bloom_test_network:
+    driver: bridge
