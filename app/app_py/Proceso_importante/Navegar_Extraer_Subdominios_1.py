@@ -7,7 +7,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from Extraccion_Subdominios import extract_subdomains
 
 
-def main(url_a_extraer=None, num_paginas_extraer=1):
+def main(url_a_extraer=None, num_paginas_extraer=1, etiquetas_a_extraer_funcion=['search-stats', 'result-panel'], etiqueta_elemento_individual='cta-area', dominio_principal="https://www.freshproduce.com"):
     print("Iniciando el proceso de extracción de subdominios...")
     mensaje_final = ""
     try:
@@ -19,7 +19,11 @@ def main(url_a_extraer=None, num_paginas_extraer=1):
                                     ] # Ya viene con su respectivo etiquetado para identificar el subdominio
         
         num_paginas_extraer = 1 # Solo se ocupa extraer una página, la primera página.
-        paginas_extraidas = extract_subdomains.extraccion_de_subdominios(url_a_extraer, num_paginas_extraer)
+        etiquetas_a_extraer_funcion=['search-stats', 'result-panel']
+        etiqueta_elemento_individual='cta-area'
+        dominio_principal="https://www.freshproduce.com"
+
+        paginas_extraidas = extract_subdomains.extraccion_de_subdominios(url_a_extraer, num_paginas_extraer, etiquetas_a_extraer_funcion, etiqueta_elemento_individual, dominio_principal)
         print(f"Total de subdominios extraídos: {len(paginas_extraidas)}")
         columnas = ['URL','Category']
         df_dominios = pd.DataFrame(paginas_extraidas, columns=columnas)

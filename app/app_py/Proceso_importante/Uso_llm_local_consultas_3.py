@@ -69,7 +69,7 @@ def generate_summary_and_topics_with_llm(dataframe, modelo="llama3.2", format=No
 
 
 
-def main(nombre_archivo= "extracted_subdomains.csv",modelo_llm="llama3.2:3b", format = None):
+def main(nombre_archivo= "scraped_data.csv",modelo_llm="llama3.2:3b", format = None):
     print("Iniciando el proceso de extracción de subdominios...")
     mensaje_final = ""
     try:
