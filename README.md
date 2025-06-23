@@ -8,7 +8,8 @@ Contenedores para la facilidad de trabajo en entornos distintos de trabajo (Wind
 ### Dockerfile
 - Se toma una imagen que contiene python 3.10 con lo esencial para trabajos en jupyter.
 - Se usa usuarios Root (tema de permisos en Linux)
-- Instalación de ping para revisión de contenedores en la misma red, y git para la utilización de github dentro del contenedor.
+- Instalación de librerías necesarias para correr una pestaña de Chrome para Selenium. Adicional instalación de ping para revisión de contenedores en la misma red, y git para la utilización de github dentro del contenedor.
+- Instalación del navegador Google Chrome y borrado del instalador
 - La carpeta por defecto en el contenedor es /app
 - Copia el archivo requirements.txt a la carpeta por defecto
 - Actualiza pip para encontrar librerías actualizadas
@@ -68,5 +69,14 @@ En la notebook se muestran los comandos para descargar un modelo (pull), ver los
 
 En la notebook se muestran comandos para encontrar etiquetas en particular con Beautiful Soup, y para el uso de Selenium y la espera de carga sobre un contenido dinámico.
 ### App
-#### app
+#### app (Notebook)
 Mediante el conocimiento recopilado, se utilizan técnicas de extracción de contenido HTML de páginas web, obteniendo subdominios que en conjunto con el dominio principal forman enlaces directos a páginas web con contenido a extraer. Además viene el uso de una LLM local mediante Ollama.
+
+#### app (Aplicacion .py)
+En esta se aplica todo lo obtenido en la Notebook para un script de Python. Contiene un README propio explicando cada carpeta.
+
+### all_csv
+Los archivos csv son generados en la misma carpeta de trabajo. Los resultados fueron movidos manualmente a esta carpeta.
+- extracted_subdomains (No requerido de entregable): Links de artículos con categorías para aplicar scrap
+- scraped_data.csv: Contenido de los artículos, su categoría, título y URL
+- analysis_summary.csv: El contenido de scraped_data.csv, añadiendo las dos peticiones hechas a una LLM

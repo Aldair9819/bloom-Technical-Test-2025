@@ -1,0 +1,30 @@
+services:
+  app_py:
+    container_name: bloom_scrap_app_py
+    depends_on:
+      - ollama
+    restart: no
+    build: .
+    image: bloom_scrap_app_py
+    volumes:
+      - ".:/app"
+    env_file:
+      - .env
+    networks:
+      - bloom_test_py_network
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    restart: no
+    runtime: nvidia
+    volumes:
+      - ./ollama_data:/root/.ollama
+    env_file:
+      - .env
+    networks:
+      - bloom_test_py_network
+
+networks:
+  bloom_test_py_network:
+    driver: bridge

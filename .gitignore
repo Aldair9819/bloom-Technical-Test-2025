@@ -1,3 +1,5 @@
 .env
 ollama_data
 *checkpoint*
+__pycache__/
+.conda

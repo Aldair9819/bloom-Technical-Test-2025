@@ -3,15 +3,20 @@ from Proceso_importante import Navegar_Extraer_Subdominios_1, Extraer_Informacio
 def main(url_a_extraer_arr, num_paginas_extraer, etiquetas_a_extraer_funcion_arr, etiqueta_elemento_individual, dominio_principal,
          nombre_archivo_con_subdominios, nombre_archivo_scrap_todas_las_paginas, modelo_llm, format):
     print("Iniciando el proceso de extracción de subdominios...")
+
+   
     resultado_navegacion = Navegar_Extraer_Subdominios_1.main(url_a_extraer_arr,
                                                                num_paginas_extraer,
                                                                etiquetas_a_extraer_funcion_arr,
                                                                etiqueta_elemento_individual,
                                                                dominio_principal)
+
     print(resultado_navegacion)
+
     print("Iniciando el proceso de extracción de información de subdominios...")
     resultado_extraccion = Extraer_Informacion_Subdominios_2.main(nombre_archivo_con_subdominios)
     print(resultado_extraccion)
+    
     print("Iniciando el proceso de consultas a LLM...")
     resultado_consultas = Uso_llm_local_consultas_3.main(nombre_archivo_scrap_todas_las_paginas,
                                                            modelo_llm=modelo_llm, format=format)
