@@ -98,7 +98,7 @@ def main(nombre_archivo= "scraped_data.csv",modelo_llm="llama3.2:3b", format = N
                     }
               dataframe_with_llm_responses = generate_summary_and_topics_with_llm(df_scraped_data, modelo=modelo_llm, format=format)        
               dataframe_with_llm_responses.to_csv("analysis_summary.csv", index=False)  # Guardar el DataFrame en un archivo CSV
-              return "Proceso de consultas a LLM terminado"
+              mensaje_final = "Proceso de consultas a LLM terminado"
        else:
            mensaje_final = f"Error al descargar el modelo {modelo_llm}: {response.get('error', 'Error desconocido')}"
     except Exception as e:
