@@ -3,8 +3,6 @@ import os
 import pandas as pd
 
 # Agrega las rutas relativas a sys.path
-#sys.path.append(os.path.abspath('../Extraccion_Subdominios'))
-#sys.path.append(os.path.abspath('carpeta_b'))
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from Extraccion_Subdominios import extract_subdomains
 
